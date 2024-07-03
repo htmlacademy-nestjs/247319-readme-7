@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Roman Milaev](https://up.htmlacademy.ru/nodejs-2/7/user/247319).
-* Наставник: `Неизвестно`.
+* Наставник: [Rail Sakhaviev](https://htmlacademy.ru/profile/id1331891).
 
 ---
 
