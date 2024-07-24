@@ -13,7 +13,7 @@ Content-Type: application/json
 ###
 
 # Get user by ID
-GET http://localhost:3000/api/auth/608e62cb-92bb-487a-8586-64ce813c11ff HTTP/1.1
+GET http://localhost:3000/api/auth/76d686f6-28b3-484c-ad03-353a76643115 HTTP/1.1
 
 ###
 

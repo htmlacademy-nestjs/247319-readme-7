@@ -19,6 +19,10 @@ export abstract class BaseMemoryRepository<T extends Entity & StorableEntity<Ret
     return this.entityFactory.create(foundEntity);
   }
 
+  public async findAll(): Promise<T[]> {
+    throw new Error('Not implemented yet');
+  }
+
   public async save(entity: T): Promise<void> {
     if (! entity.id) {
       entity.id = randomUUID();
