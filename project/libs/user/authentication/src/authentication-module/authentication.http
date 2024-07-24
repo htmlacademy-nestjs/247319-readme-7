@@ -27,3 +27,14 @@ Content-Type: application/json
 }
 
 ###
+
+# Change user password
+PUT http://localhost:3000/api/auth/ab1c1a80-a992-4713-9521-8b31e497972c/password HTTP/1.1
+Content-Type: application/json
+
+{
+  "oldPassword": "123456",
+  "newPassword": "654321"
+}
+
+###

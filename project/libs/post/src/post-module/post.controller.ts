@@ -1,8 +1,6 @@
-import { fillDto } from '@project/helpers';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { PostService } from './post.service';
 import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post } from '@nestjs/common';
-import { PostRdo } from '../rdo/post.rdo';
 import { UpdatePostDto } from '../dto/update-post.dto';
 
 @Controller('post')

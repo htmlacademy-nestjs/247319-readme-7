@@ -1,7 +1,6 @@
-import { Controller, Post, Body, Param, Get } from '@nestjs/common';
+import { Controller, Post, Body, Param, Get, Put } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
-import { CreateUserDto } from '../dto/create-user.dto';
-import { LoginUserDto } from '../dto/login-user.dto';
+import { CreateUserDto, LoginUserDto, UpdatePasswordDto } from '../index';
 
 @Controller('auth')
 export class AuthenticationController {
@@ -21,9 +20,20 @@ export class AuthenticationController {
     return verifiedUser.toPOJO();
   }
 
+  @Post('logout')
+  public async logout() {
+    throw new Error('Not implemented yet');
+  }
+
   @Get(':id')
   public async show(@Param('id') id: string) {
     const existUser = await this.authService.getUser(id);
     return existUser.toPOJO();
+  }
+
+  @Put(':id/password')
+  public async updatePassword(@Param('id') id: string, @Body() dto: UpdatePasswordDto) {
+    const user = await this.authService.updatePassword(id, dto);
+    return user.toPOJO();
   }
 }

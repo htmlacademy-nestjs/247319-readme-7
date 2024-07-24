@@ -5,6 +5,7 @@ import { UserRole } from '@project/core';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG } from './authentication.constant';
 import { LoginUserDto } from '../dto/login-user.dto';
+import { UpdatePasswordDto } from '../dto/update-password.dto';
 
 @Injectable()
 export class AuthenticationService {
@@ -55,6 +56,23 @@ export class AuthenticationService {
     if (! user) {
       throw new NotFoundException(AUTH_USER_NOT_FOUND);
     }
+
+    return user;
+  }
+
+  public async updatePassword(userId: string, dto: UpdatePasswordDto) {
+    const user = await this.blogUserRepository.findById(userId);
+
+    if (!user) {
+      throw new NotFoundException(AUTH_USER_NOT_FOUND);
+    }
+
+    if (!await user.comparePassword(dto.oldPassword)) {
+      throw new UnauthorizedException(AUTH_USER_PASSWORD_WRONG);
+    }
+
+    await user.setPassword(dto.newPassword);
+    await this.blogUserRepository.save(user);
 
     return user;
   }

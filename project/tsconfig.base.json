@@ -17,9 +17,11 @@
     "paths": {
       "@project/authentication": ["libs/user/authentication/src/index.ts"],
       "@project/blog-user": ["libs/user/blog-user/src/index.ts"],
+      "@project/comments": ["libs/comments/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"],
+      "@project/likes": ["libs/likes/src/index.ts"],
       "@project/post": ["libs/post/src/index.ts"]
     }
   },
