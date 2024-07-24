@@ -7,6 +7,7 @@ import { PostRepository } from './post.repository';
 @Module({
   imports: [],
   controllers: [PostController],
-  providers: [PostService, PostFactory, PostRepository]
+  providers: [PostService, PostFactory, PostRepository],
+  exports: [PostService],
 })
 export class PostModule {}
