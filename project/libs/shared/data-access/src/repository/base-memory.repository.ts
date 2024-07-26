@@ -20,7 +20,8 @@ export abstract class BaseMemoryRepository<T extends Entity & StorableEntity<Ret
   }
 
   public async findAll(): Promise<T[]> {
-    throw new Error('Not implemented yet');
+    const entities = Array.from(this.entities.values());
+    return entities.map(this.entityFactory.create);
   }
 
   public async save(entity: T): Promise<void> {

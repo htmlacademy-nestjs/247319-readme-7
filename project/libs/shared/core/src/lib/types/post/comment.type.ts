@@ -1,4 +1,4 @@
-export interface Comment {
+export type Comment = {
   id?: string;
   message: string;
   postId: string;

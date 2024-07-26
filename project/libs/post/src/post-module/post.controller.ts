@@ -2,7 +2,8 @@ import { CreatePostDto } from '../dto/create-post.dto';
 import { PostService } from './post.service';
 import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post } from '@nestjs/common';
 import { UpdatePostDto } from '../dto/update-post.dto';
-
+import { fillDto } from '@project/helpers';
+import { PostRdo } from '../rdo/post.rdo';
 @Controller('post')
 export class PostController {
   constructor(
@@ -10,15 +11,15 @@ export class PostController {
   ) {}
 
   @Get('/')
-  public async getAllPosts() {
+  public async index() {
     const postEntities = await this.postService.getAllPosts();
-    return postEntities.map((post) => post.toPOJO());
+    return fillDto(PostRdo, postEntities.map((post) => post.toPOJO()));
   }
 
   @Post('/')
   public async create(@Body() dto: CreatePostDto) {
     const postEntity = await this.postService.createPost(dto);
-    return postEntity.toPOJO()
+    return fillDto(PostRdo, postEntity.toPOJO());
   }
 
   @Get('/:postId')
@@ -28,20 +29,18 @@ export class PostController {
       throw new NotFoundException(`Post with id: ${postId} not found`);
     }
 
-    return postEntity.toPOJO();
+    return fillDto(PostRdo, postEntity.toPOJO());
   }
 
   @Patch('/:postId')
   public async update(@Param('postId') postId: string, @Body() dto: UpdatePostDto) {
     const postEntity = await this.postService.updatePost(postId, dto);
 
-    return postEntity.toPOJO();
+    return fillDto(PostRdo, postEntity.toPOJO());
   }
 
   @Delete(':/postId')
   public async delete(@Param('postId') postId: string) {
     await this.postService.deletePost(postId);
   }
-
-
 }

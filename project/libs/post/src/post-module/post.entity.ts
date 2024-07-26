@@ -2,49 +2,53 @@ import { Post, Entity, StorableEntity, PostState, PostType } from '@project/core
 
 export class PostEntity extends Entity implements StorableEntity<Post> {
   public userId: string;
+  public creatorUserId?: string;
+  public originalPostId?: string;
   public postType: PostType;
   public postState: PostState;
+  public title?: string;
+  public videoLink?: string;
+  public announcement?: string;
   public createdDate?: Date;
   public updatedDate?: Date;
   public publishDate?: Date;
+  public postText?: string;
   public isReposted: boolean;
-  public creatorUserId?: string;
-  public originalPostId?: string;
-  public title?: string;
-  public link?: string;
-  public description?: string;
-  public photoUrl?: string;
   public quoteText?: string;
   public quoteAuthor?: string;
-  public announcement?: string;
-  public postText?: string;
-  public videoLink?: string;
+  public photoUrl?: string;
+  public link?: string;
+  public description?: string;
+  public tags: string[];
+  public likes: string[];
 
-  constructor(post: Post) {
+  constructor(data: Post) {
     super();
-    this.populate(post)
+    this.populate(data)
   }
 
-  public populate(post: Post): void {
-    this.id = post.id;
-    this.userId = post.userId;
-    this.postType = post.postType;
-    this.postState = post.postState;
-    this.createdDate = post.createdDate;
-    this.updatedDate = post.updatedDate;
-    this.publishDate = post.publishDate;
-    this.creatorUserId = post.creatorUserId;
-    this.originalPostId = post.originalPostId;
-    this.isReposted = post.isReposted;
-    this.title = post.title;
-    this.link = post.link;
-    this.description = post.description;
-    this.photoUrl = post.photoUrl;
-    this.quoteText = post.quoteText;
-    this.quoteAuthor = post.quoteAuthor;
-    this.announcement = post.announcement;
-    this.postText = post.postText;
-    this.videoLink = post.videoLink;
+  public populate(data: Post): void {
+    this.id = data.id;
+    this.userId = data.userId;
+    this.creatorUserId = data.creatorUserId;
+    this.originalPostId = data.originalPostId;
+    this.postType = data.postType;
+    this.postState = data.postState;
+    this.title = data.title;
+    this.videoLink = data.videoLink;
+    this.announcement = data.announcement;
+    this.createdDate = data.createdDate;
+    this.updatedDate = data.updatedDate;
+    this.publishDate = data.publishDate;
+    this.postText = data.postText;
+    this.isReposted = data.isReposted;
+    this.quoteText = data.quoteText;
+    this.quoteAuthor = data.quoteAuthor;
+    this.photoUrl = data.photoUrl;
+    this.link = data.link;
+    this.description = data.description;
+    this.tags = data.tags;
+    this.likes = data.likes;
   }
 
   public toPOJO(): Post {
@@ -68,6 +72,8 @@ export class PostEntity extends Entity implements StorableEntity<Post> {
       announcement: this.announcement ?? null,
       postText: this.postText ?? null,
       videoLink: this.videoLink ?? null,
+      tags: this.tags,
+      likes: this.likes ?? null,
     };
   }
 }

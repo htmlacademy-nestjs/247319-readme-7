@@ -10,11 +10,11 @@ export class CommentsService {
   ) {}
 
   public async getCommentsByPostId(postId: string) {
-    return this.commentsRepository.findById(postId);
+    return this.commentsRepository.findByPostId(postId);
   }
 
   public async createComment(data: Comment): Promise<CommentsEntity> {
-    const commentEntity = CommentsEntity.fromObject(data);
+    const commentEntity = CommentsEntity.createNewObject(data);
     await this.commentsRepository.save(commentEntity)
 
     return commentEntity;

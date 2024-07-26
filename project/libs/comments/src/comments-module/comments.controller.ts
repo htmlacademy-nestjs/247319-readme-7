@@ -1,12 +1,13 @@
 import { PostService } from '@project/post';
 import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
-import { CommentsService, CreateCommentDto } from '@project/comments';
+import { CommentRdo, CommentsService, CreateCommentDto } from '@project/comments';
+import { fillDto } from '@project/helpers';
 
 @Controller('/post/:postId/comments')
 export class CommentsController {
   constructor(
+    private readonly commentsService: CommentsService,
     private readonly postService: PostService,
-    private readonly commentsService: CommentsService
   ) {}
 
   @Get('/')
@@ -16,8 +17,7 @@ export class CommentsController {
       throw new NotFoundException(`Post with id: ${postId} not found`);
     }
     const commentEntities = await this.commentsService.getCommentsByPostId(postId);
-    //Почему-то тут не массив приходит - и я запутался
-    return commentEntities;
+    return fillDto(CommentRdo, commentEntities.map((comment) => comment.toPOJO()));
   }
 
   @Post('/')
@@ -31,7 +31,6 @@ export class CommentsController {
       postId,
     });
 
-    return commentEntity.toPOJO();
+    return fillDto(CommentRdo, commentEntity.toPOJO());
   }
-
 }

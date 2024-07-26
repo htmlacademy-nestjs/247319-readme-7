@@ -1,24 +1,26 @@
 import { PostState } from './post-state.enum';
 import { PostType } from './post-type.enum';
 
-export interface Post {
+export type Post = {
   id?: string;
   userId: string;
+  creatorUserId?: string;
+  originalPostId?: string;
   postType: PostType;
   postState: PostState;
+  title?: string;
+  videoLink?: string;
+  announcement?: string;
   createdDate?: Date;
   updatedDate?: Date;
   publishDate?: Date;
-  creatorUserId?: string;
-  originalPostId?: string;
+  postText?: string;
   isReposted?: boolean;
-  title?: string;
-  link?: string;
-  description?: string;
-  photoUrl?: string;
   quoteText?: string;
   quoteAuthor?: string;
-  announcement?: string;
-  postText?: string;
-  videoLink?: string;
+  photoUrl?: string;
+  link?: string;
+  description?: string;
+  tags: string[];
+  likes?: string[];
 }

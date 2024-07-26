@@ -1,10 +1,10 @@
 # Get all comments by postId
-GET http://localhost:3000/api/post/dc319595-aeca-4cf4-8e81-415cac51f69b/comments HTTP/1.1
+GET http://localhost:3000/api/post/edea23ac-292a-4cea-ac69-658e08262082/comments HTTP/1.1
 
 ###
 
 # Create new comment
-POST http://localhost:3000/api/post/dc319595-aeca-4cf4-8e81-415cac51f69b/comments HTTP/1.1
+POST http://localhost:3000/api/post/edea23ac-292a-4cea-ac69-658e08262082/comments HTTP/1.1
 Content-Type: application/json
 
 {

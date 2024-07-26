@@ -9,10 +9,25 @@ export class PostRdo {
   userId: string;
 
   @Expose()
+  creatorUserId?: string;
+
+  @Expose()
+  originalPostId?: string;
+
+  @Expose()
   postType: PostType;
 
   @Expose()
   postState: PostState;
+
+  @Expose()
+  title?: string;
+
+  @Expose()
+  videoLink?: string;
+
+  @Expose()
+  announcement?: string;
 
   @Expose()
   createdDate?: Date;
@@ -24,25 +39,10 @@ export class PostRdo {
   publishDate?: Date;
 
   @Expose()
-  creatorUserId?: string;
-
-  @Expose()
-  originalPostId?: string;
+  postText?: string;
 
   @Expose()
   isReposted?: boolean;
-
-  @Expose()
-  title?: string;
-
-  @Expose()
-  link?: string;
-
-  @Expose()
-  description?: string;
-
-  @Expose()
-  photoUrl?: string;
 
   @Expose()
   quoteText?: string;
@@ -51,11 +51,17 @@ export class PostRdo {
   quoteAuthor?: string;
 
   @Expose()
-  announcement?: string;
+  photoUrl?: string;
 
   @Expose()
-  postText?: string;
+  link?: string;
 
   @Expose()
-  videoLink?: string;
+  description?: string;
+
+  @Expose()
+  tags?: string[];
+
+  @Expose()
+  likes?: string[];
 }

@@ -32,15 +32,15 @@ export class PostService {
       throw new NotFoundException(`Post with id: ${postId} not found`);
     }
 
-    postEntity.postType = dto.postType;
     postEntity.title = dto.title;
-    postEntity.videoLink = dto.videoLink;
-    postEntity.announcement = dto.announcement;
     postEntity.link = dto.link;
     postEntity.description = dto.description;
     postEntity.photoUrl = dto.photoUrl;
     postEntity.quoteText = dto.quoteText;
     postEntity.quoteAuthor = dto.quoteAuthor;
+    postEntity.announcement = dto.announcement;
+    postEntity.postText = dto.postText;
+    postEntity.videoLink = dto.videoLink;
 
     await this.postRepository.update(postEntity);
 

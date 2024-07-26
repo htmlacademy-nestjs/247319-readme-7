@@ -7,18 +7,18 @@ export class CommentsEntity extends Entity implements StorableEntity<Comment> {
   public createdDate?: Date;
   public updatedDate?: Date;
 
-  constructor(comment: Comment) {
+  constructor(data: Comment) {
     super();
-    this.populate(comment);
+    this.populate(data);
   }
 
-  public populate(comment: Comment): void {
-    this.id = comment.id;
-    this.message = comment.message;
-    this.postId = comment.postId;
-    this.userId = comment.userId;
-    this.createdDate = comment.createdDate;
-    this.updatedDate = comment.updatedDate;
+  public populate(data: Comment): void {
+    this.id = data.id;
+    this.message = data.message;
+    this.postId = data.postId;
+    this.userId = data.userId;
+    this.createdDate = data.createdDate;
+    this.updatedDate = data.updatedDate;
   }
 
   public toPOJO(): Comment {
@@ -29,11 +29,10 @@ export class CommentsEntity extends Entity implements StorableEntity<Comment> {
       userId: this.userId,
       createdDate: this.createdDate,
       updatedDate: this.updatedDate,
-
     }
   }
 
-  static fromObject(data: Comment): CommentsEntity {
+  static createNewObject(data: Comment): CommentsEntity {
     return new CommentsEntity(data);
   }
 }
