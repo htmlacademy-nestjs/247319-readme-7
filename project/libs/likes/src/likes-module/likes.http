@@ -1,0 +1,17 @@
+# Create like to post by id from userId
+
+POST http://localhost:3000/api/post/f3f2ba60-0cb4-4728-bb7d-cb8a13233922/likes?user123 HTTP/1.1
+
+###
+
+# Delete like to post by id from userId
+
+DELETE http://localhost:3000/api/post/f3f2ba60-0cb4-4728-bb7d-cb8a13233922/likes?user123 HTTP/1.1
+
+###
+
+# Get all likes from post
+
+GET http://localhost:3000/api/post/f3f2ba60-0cb4-4728-bb7d-cb8a13233922/like HTTP/1.1
+
+###

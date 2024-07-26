@@ -1,0 +1,9 @@
+export { CreateTagDto } from './dto/create-tag.dto';
+export { UpdateTagDto } from './dto/update-tag.dto';
+export { TagRdo } from './rdo/tag.rdo';
+export { TagsController } from './tags-module/tags.controller';
+export { TagsEntity } from './tags-module/tags.entity';
+export { TagsFactory } from './tags-module/tags.factory';
+export { TagsModule } from './tags-module/tags.module';
+export { TagsRepository } from './tags-module/tags.repository';
+export { TagsService } from './tags-module/tags.service';
