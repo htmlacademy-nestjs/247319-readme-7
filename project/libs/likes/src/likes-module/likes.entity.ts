@@ -6,6 +6,9 @@ export class LikesEntity extends Entity implements StorableEntity<Like> {
 
   constructor(data: Like) {
     super();
+    if (!data.postId || !data.userId) {
+      throw new Error('PostId or UserId does not exist')
+    }
     this.populate(data);
   }
 

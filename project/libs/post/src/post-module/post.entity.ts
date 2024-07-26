@@ -1,3 +1,4 @@
+import { LikesEntity } from './../../../likes/src/likes-module/likes.entity';
 import { Post, Entity, StorableEntity, PostState, PostType } from '@project/core';
 
 export class PostEntity extends Entity implements StorableEntity<Post> {

@@ -5,12 +5,12 @@ import { LikesEntity } from './likes.entity';
 @Injectable()
 export class LikesService {
   constructor(
-    private readonly likesRepository: LikesRepository
+    private readonly likesRepository: LikesRepository,
   ) {}
 
   public async createLike(postId: string, userId: string): Promise<LikesEntity> {
-    const likesEntity = await this.likesRepository.findByPostIdAndUserId(postId, userId);
-    if (likesEntity) {
+    const likeEntityExist = await this.likesRepository.findByPostIdAndUserId(postId, userId);
+    if (likeEntityExist) {
       throw new ConflictException(`Like from this user:
         ${userId} on the post: ${postId} already exist`);
     }

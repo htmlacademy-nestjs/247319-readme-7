@@ -1,11 +1,11 @@
 import { BaseMemoryRepository } from '@project/data-access';
-import { LikesEntity } from './likes.entity';
-import { LikesFactory } from './likes.factory';
+import { TagsEntity } from './tags.entity';
+import { TagsFactory } from './tags.factory';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class LikesRepository extends BaseMemoryRepository<LikesEntity> {
-  constructor(entityFactory: LikesFactory) {
+export class TagsRepository extends BaseMemoryRepository<TagsEntity> {
+  constructor(entityFactory: TagsFactory) {
     super(entityFactory);
   }
 
@@ -15,18 +15,14 @@ export class LikesRepository extends BaseMemoryRepository<LikesEntity> {
     return comments.map(this.entityFactory.create);
   }
 
-  public async findByPostIdAndUserId(postId: string, userId: string) {
+  public async findByTitle(title: string) {
     const entities = Array.from(this.entities.values());
-    const like = entities
-      .find((entity) => {
-        entity.postId === postId && entity.userId === userId
-      }
-    );
+    const tag = entities.find((entity) => entity.title === title);
 
-    if (!like) {
+    if (!tag) {
       return null;
     }
 
-    return this.entityFactory.create(like);
+    return this.entityFactory.create(tag);
   }
 }
