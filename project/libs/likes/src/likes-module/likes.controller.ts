@@ -1,6 +1,7 @@
 import { PostService } from '@project/post';
 import { Controller, Delete, Get, NotFoundException, Param, Post, Query } from '@nestjs/common';
-import { LikesService, LikeRdo } from '@project/likes';
+import { LikesService } from './likes.service';
+import { LikeRdo } from '../rdo/like.rdo';
 import { fillDto } from '@project/helpers';
 
 @Controller('post/:postId/likes')

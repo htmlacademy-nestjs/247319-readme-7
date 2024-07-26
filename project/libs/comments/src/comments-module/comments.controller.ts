@@ -1,6 +1,8 @@
 import { PostService } from '@project/post';
-import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
-import { CommentRdo, CommentsService, CreateCommentDto } from '@project/comments';
+import { Controller, Body, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { CommentsService } from './comments.service';
+import { CommentRdo } from '../rdo/comment.rdo';
+import { CreateCommentDto } from '../dto/create-comment.dto';
 import { fillDto } from '@project/helpers';
 
 @Controller('post/:postId/comments')
