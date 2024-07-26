@@ -3,7 +3,7 @@ import { Controller, Delete, Get, NotFoundException, Param, Post, Query } from '
 import { LikesService, LikeRdo } from '@project/likes';
 import { fillDto } from '@project/helpers';
 
-@Controller('/post/:postId/likes')
+@Controller('post/:postId/likes')
 export class LikesController {
   constructor(
     private readonly likesService: LikesService,

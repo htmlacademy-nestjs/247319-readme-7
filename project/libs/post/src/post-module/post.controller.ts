@@ -39,7 +39,7 @@ export class PostController {
     return fillDto(PostRdo, postEntity.toPOJO());
   }
 
-  @Delete(':/postId')
+  @Delete('/:postId')
   public async delete(@Param('postId') postId: string) {
     await this.postService.deletePost(postId);
   }

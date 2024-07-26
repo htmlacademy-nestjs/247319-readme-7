@@ -3,7 +3,7 @@ import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/c
 import { CommentRdo, CommentsService, CreateCommentDto } from '@project/comments';
 import { fillDto } from '@project/helpers';
 
-@Controller('/post/:postId/comments')
+@Controller('post/:postId/comments')
 export class CommentsController {
   constructor(
     private readonly commentsService: CommentsService,
